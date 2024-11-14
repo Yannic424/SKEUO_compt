@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compteur Digital</title>
+    <link rel="stylesheet" href="compt.css">
+</head>
+
+<body>
+
+    <!-- segments SVG -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position: absolute;">
+        <defs>
+            <!-- Définition du segment "topLeft" -->
+            <clipPath id="segment-topLeft">
+                <path d="M1.06694e-06 10L5 5L13.5 13.5V43L5 49L4.76837e-07 45L1.06694e-06 10Z" />
+            </clipPath>
+
+            <!-- Définition du segment "top" -->
+            <clipPath id="segment-top">
+                <path d="M50 1.57963e-06L54 4L45.5 12.5L14.5 12.5L6 4L10 1.57963e-06H50Z" />
+            </clipPath>
+
+            <!-- Définition du segment "topRight" -->
+            <clipPath id="segment-topRight">
+                <path d="M46.5 13.5L55 5L60 10V45L54 49L46.5 43V13.5Z" />
+            </clipPath>
+
+            <!-- Définition du segment "bottomLeft" -->
+            <clipPath id="segment-bottomLeft">
+                <path d="M5.90104e-07 90L5 95L13.5 86.5V57L5 51L0 55L5.90104e-07 90Z" />
+            </clipPath>
+
+            <!-- Définition du segment "bottom" -->
+            <clipPath id="segment-bottom">
+                <path d="M50 100L54 96L45.5 87.5L14.5 87.5L6 96L10 100H50Z" />
+            </clipPath>
+
+            <!-- Définition du segment "bottomRight" -->
+            <clipPath id="segment-bottomRight">
+                <path d="M46.5 86.5L55 95L60 90V55L54 51L46.5 57V86.5Z" />
+            </clipPath>
+
+            <!-- Définition du segment "middle" -->
+            <clipPath id="segment-middle">
+                <path d="M45.5 44L53.5 50L45.5 56L14.5 56L6 50L14.5 44H45.5Z" />
+            </clipPath>
+
+
+            <!-- screenLight -->
+            <clipPath id="screenLight">
+                    <path d="M0 0H200V18H149.5L62.5 56L59.5 144.5H19L0 160V0Z" fill="white" />
+            </clipPath>
+            
+        </defs>
+    </svg>
+
+
+
+    <div class="mainScreen">
+        <div class="counter">
+            <div class="digit-container">
+                <!-- Left -->
+                <div class="digit" id="tens">
+                    
+                    <div class="segment a"></div>
+                    <div class="segment a shadow1"></div>
+                    <div class="segment a shadow2"></div>
+
+                    <div class="segment b"></div>
+                    <div class="segment b shadow1"></div>
+                    <div class="segment b shadow2"></div>
+
+                    <div class="segment c"></div>
+                    <div class="segment c shadow1"></div>
+                    <div class="segment c shadow2"></div>
+
+                    <div class="segment d"></div>
+                    <div class="segment d shadow1"></div>
+                    <div class="segment d shadow2"></div>
+
+                    <div class="segment e"></div>
+                    <div class="segment e shadow1"></div>
+                    <div class="segment e shadow2"></div>
+
+                    <div class="segment f"></div>
+                    <div class="segment f shadow1"></div>
+                    <div class="segment f shadow2"></div>
+
+                    <div class="segment g"></div>
+                    <div class="segment g shadow1"></div>
+                    <div class="segment g shadow2"></div>
+
+
+
+                </div>
+
+                
+
+
+                <!-- Right -->
+                <div class="digit" id="units">
+                    <div class="segment a"></div>
+                    <div class="segment a shadow1"></div>
+                    <div class="segment a shadow2"></div>
+
+                    <div class="segment b"></div>
+                    <div class="segment b shadow1"></div>
+                    <div class="segment b shadow2"></div>
+
+                    <div class="segment c"></div>
+                    <div class="segment c shadow1"></div>
+                    <div class="segment c shadow2"></div>
+
+                    <div class="segment d"></div>
+                    <div class="segment d shadow1"></div>
+                    <div class="segment d shadow2"></div>
+
+                    <div class="segment e"></div>
+                    <div class="segment e shadow1"></div>
+                    <div class="segment e shadow2"></div>
+
+                    <div class="segment f"></div>
+                    <div class="segment f shadow1"></div>
+                    <div class="segment f shadow2"></div>
+
+                    <div class="segment g"></div>
+                    <div class="segment g shadow1"></div>
+                    <div class="segment g shadow2"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <button onclick="incrementCounter()"><img src="./ANIM_Bart_NO.gif" alt=""></button>
+
+    
+    <script src="compt.js"></script>
+
+</body>
+
+</html>

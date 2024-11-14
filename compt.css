@@ -1,0 +1,370 @@
+/* style.css */
+:root {
+    --segmentColor: #c13718;
+    --glowColorLight: rgba(34, 51, 52, 0.248);
+    --glowColorDark: rgb(147, 34, 41);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #333;
+    color: white;
+}
+
+.mainScreen {
+    background-color: #1c1c1c;
+    position: relative;
+    /* Assurez-vous que le parent a une position définie */
+}
+
+.mainScreen::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background: radial-gradient(circle, rgba(213, 20, 171, 0.1) 20%, rgba(34, 34, 34, 0) 50%);
+    transform: scale(140%, 20%) translateY(-160%);
+}
+
+.mainScreen::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    background-color: rgba(70, 203, 223, 0.038);
+    transform: scale(100%, 100%) translate(8%, -90%);
+    clip-path: url(#screenLight);
+
+}
+
+.counter {
+    display: flex;
+    gap: 10px;
+    /* border: 2px solid red; */
+    padding: 20px;
+
+    filter: saturate(100%);
+}
+
+
+
+.counter::after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 160px;
+    background-color: rgba(242, 230, 10, 0.14);
+    opacity: .1;
+
+
+}
+
+.counter::before {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 160px;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+        linear-gradient(90deg,
+            rgba(255, 0, 0, 0.06),
+            rgba(0, 255, 0, 0.02),
+            rgba(0, 0, 255, 0.06));
+    background-size: 100% 4px, 200px 100%;
+    z-index: 1;
+    animation: flicker 3s infinite;
+    opacity: .4;
+}
+
+
+/* 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////GRADIENT////SCREEN/////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+*/
+.digit-container {
+    display: inline-flex;
+    padding: 20px;
+    /* border: 2px solid yellow; */
+    background: radial-gradient(circle, rgba(210, 19, 147, 0.12) 20%, rgba(34, 34, 34, 0) 50%);
+    background-color: #222;
+    animation: saturateRotate .3s infinite linear;
+
+
+}
+
+
+.digit-container::after,
+.digit-container::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 80px;
+    box-sizing: border-box;
+    /* border: 2px solid green; */
+}
+
+.digit-container::after {
+    transform: translate(80px, -25px) scale(150%, 80%);
+    clip-path: polygon(0 20%, 72% 20%, 72% 100%, 0 100%);
+    background: radial-gradient(circle, rgba(228, 245, 219, 0.06) 20%, rgba(34, 34, 34, 0) 40%);
+    opacity: .7;
+}
+
+.digit-container::before {
+    transform: translate(-10px, 62px) scaleX(140%);
+    clip-path: polygon(20% 0, 100% 0, 100% 72%, 20% 72%);
+    background: radial-gradient(circle, rgba(77, 143, 143, 0.15) 10%, rgba(34, 34, 34, 0) 70%);
+    opacity: .7;
+}
+
+/* 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+
+.digit {
+    position: relative;
+    width: 60px;
+    height: 100px;
+    background-color: transparent;
+
+
+    /* border: 2px solid green; */
+
+
+    /* ITALIC */
+    transform: skewX(-6deg);
+}
+
+#units,
+#tens {
+    padding: 10px;
+}
+
+
+
+/* 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////SHADOWS/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+.segment.on+.shadow1 {
+    opacity: .2;
+    top: 8px;
+    left: 8px;
+    background-color: rgb(0, 0, 255);
+    position: absolute;
+    z-index: -1;
+}
+
+.segment.on+.shadow1+.shadow2 {
+    opacity: .2;
+    top: 12px;
+    left: 12px;
+    background-color: rgb(255, 0, 255);
+    position: absolute;
+    z-index: -1;
+}
+
+
+
+
+
+
+
+/* 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+
+
+/* OFF */
+.segment {
+    position: absolute;
+    background-color: #ff4444;
+    width: 100%;
+    height: 12%;
+    opacity: 0.08;
+    transition: opacity 0.4s cubic-bezier(0.17, 0.67, 0.5, 1.15);
+}
+
+
+
+/* ON - Glow Effect */
+.segment.on {
+    opacity: 1;
+    box-shadow: inset 0px 0px 5px var(--glowColorLight),
+        inset -4px 0 6px var(--glowColorDark),
+        inset -1px -1px 0 rgba(0, 187, 255, 0.373),
+        inset -2px 0 0 rgba(0, 255, 30, 0.373),
+        inset 1px 1px 0 rgba(226, 9, 175, 0.433);
+}
+
+.segment.on::after {
+    content: "";
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: greenyellow;
+}
+
+/* Duplication et flou des segments allumés */
+/* .segment.on::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    filter: blur(5px);
+    opacity: 1;
+    transform: scale(1.1);
+    background-color: yellow;
+    transform-origin: center center;
+} */
+
+
+
+
+/* SEGMENTS */
+
+/* topLeft */
+.segment.a {
+    width: 60px;
+    height: 100px;
+    background-color: var(--segmentColor);
+    clip-path: url(#segment-topLeft);
+}
+
+/* top */
+.segment.b {
+    width: 60px;
+    height: 100px;
+    background-color: var(--segmentColor);
+    clip-path: url(#segment-top);
+}
+
+/* topRight */
+.segment.c {
+    width: 60px;
+    height: 100px;
+    background-color: var(--segmentColor);
+    clip-path: url(#segment-topRight);
+}
+
+/* bottomLeft */
+.segment.d {
+    width: 60px;
+    height: 100px;
+    background-color: var(--segmentColor);
+    clip-path: url(#segment-bottomLeft);
+}
+
+/* bottom */
+.segment.e {
+    width: 60px;
+    height: 100px;
+    background-color: var(--segmentColor);
+    clip-path: url(#segment-bottom);
+}
+
+/* bottomRight */
+.segment.f {
+    width: 60px;
+    height: 100px;
+    background-color: var(--segmentColor);
+    clip-path: url(#segment-bottomRight);
+}
+
+/* middle */
+.segment.g {
+    width: 60px;
+    height: 100px;
+    background-color: var(--segmentColor);
+    clip-path: url(#segment-middle);
+}
+
+
+
+
+button {
+    transform: scale(400%) translate(-33px, 45px);
+    background-color: #222;
+}
+
+button img {
+    image-rendering: crisp-edges;
+    margin: 0 0 -3px 0;
+}
+
+
+
+
+/* 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////KEYFRAMES////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+@keyframes saturateRotate {
+    0% {
+        filter: saturate(100%);
+    }
+
+    14% {
+        filter: saturate(100%);
+    }
+
+    15% {
+        filter: saturate(110%);
+    }
+
+    16% {
+        filter: saturate(100%);
+    }
+
+    48% {
+        filter: saturate(100%);
+    }
+
+    50% {
+        filter: saturate(90%);
+    }
+
+    60% {
+        filter: saturate(100%);
+    }
+
+    100% {
+        filter: saturate(100%);
+    }
+}
+
+
+@keyframes flicker {
+    0% {
+        transform: translateY(2%);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+
+/* 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+*/
